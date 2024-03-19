@@ -37,7 +37,7 @@
 }
 
 .popup__close-button {
-  background-image: url(../images/closeicon.png);
+  background-image: url(../images/CloseIcon.svg);
   background-repeat: no-repeat;
   background-size: 100%;
   cursor: pointer;
