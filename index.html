@@ -24,8 +24,96 @@
           <button class="profile__add"></button>
         </section>
         <div class="cards"></div>
-        <footer class="footer">&copy; 2024. Sergio Rodríguez</footer>
       </main>
+      <footer class="footer">&copy; 2024. Sergio Rodríguez</footer>
+
+      <section class="popup" id="edit-profile-popup">
+        <div class="popup__overlay" id="popup-overlay-edit"></div>
+        <div class="popup__container" id="popup-edit">
+          <form class="popup__form" novalidate>
+            <button class="popup__close-button"></button>
+            <h2 class="popup__title">Editar Perfil</h2>
+            <input
+              class="popup__input popup__input_name"
+              type="text"
+              id="popup__input_name"
+              minlength="2"
+              maxlength="40"
+              placeholder="Name"
+              required
+            />
+            <span class="popup__error" id="popup__input_name-error"></span>
+            <p></p>
+            <input
+              class="popup__input popup__input_about"
+              type="text"
+              id="popup__input_about"
+              minlength="2"
+              maxlength="200"
+              placeholder="Profession"
+              required
+            />
+            <span class="popup__error" id="popup__input_about-error"></span>
+            <button class="popup__save-button" type="submit">Save</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="popup" id="add-image-popup">
+        <div class="popup__overlay" id="popup-overlay-add"></div>
+        <div class="popup__container" id="popup-add">
+          <form class="popup__form" novalidate>
+            <button
+              class="popup__close-button"
+              id="popup__close-button-card"
+            ></button>
+            <h2 class="popup__title">Nuevo lugar</h2>
+            <input
+              class="popup__input popup__input_title"
+              type="text"
+              id="popup__input_title"
+              minlength="2"
+              maxlength="30"
+              placeholder="Titulo"
+              required
+            />
+            <span class="popup__error" id="popup__input_title-error"></span>
+            <input
+              class="popup__input popup__input_about"
+              type="url"
+              id="popup__input_image"
+              minlength="2"
+              placeholder="Enlace a la imagen"
+              required
+            />
+            <span class="popup__error" id="popup__input_image-error"></span>
+            <button class="popup__save-button" type="submit">Create</button>
+          </form>
+        </div>
+      </section>
+
+      <template class="template-card">
+        <div class="card">
+          <img class="card__photo" />
+          <div class="card__info">
+            <p class="card__info-name"></p>
+            <button class="card__like-button"></button>
+            <button class="card__delete-button"></button>
+          </div>
+        </div>
+      </template>
+
+      <div class="popup" id="popup_image-open">
+        <div class="popup__overlay" id="popup-overlay-image"></div>
+        <div class="popup__content-image">
+          <button
+            class="popup__close-button-image"
+            id="popup__close-image"
+          ></button>
+          <img class="popup__image" src="." alt="" />
+          <h2 class="popup__image-title"></h2>
+        </div>
+      </div>
     </div>
   </body>
 </html>
