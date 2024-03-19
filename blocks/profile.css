@@ -16,7 +16,7 @@
   flex-wrap: nowrap;
 }
 
-.profile__info--container {
+.profile__info-container {
   display: flex;
   align-items: center;
 }
