@@ -113,7 +113,7 @@ function handleAddImageFormSubmit(evt) {
   closeAddImagePopup();
 }
 
-function cardGenerator(title, link) {
+function generateCard(title, link) {
   const card = templateCard.cloneNode(true).content.querySelector(".card");
   const cardImage = card.querySelector(".card__photo");
   const cardTitle = card.querySelector(".card__info-name");
@@ -135,14 +135,14 @@ function cardGenerator(title, link) {
 }
 
 initialCards.forEach(function (element) {
-  const newCard = cardGenerator(element.name, element.link);
+  const newCard = generateCard(element.name, element.link);
   cardArea.append(newCard);
 });
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
   if (evt.submitter.classList.contains("popup__save-button")) {
-    const newCard = cardGenerator(titleInput.value, imageInput.value);
+    const newCard = generateCard(titleInput.value, imageInput.value);
     cardArea.prepend(newCard);
   }
   closeAddImagePopup();
