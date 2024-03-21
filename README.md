@@ -11,3 +11,5 @@ Tecnologías utilizadas.
 - Grid
 - Flexbox
 - Git
+
+Enlace al proyecto: https://sergiordzm.github.io/web_project_around/
