@@ -44,7 +44,7 @@
   margin: 30px 0 0 18px;
 }
 
-.profile__info--container-button:hover {
+.profile__edit-button:hover {
   opacity: 0.6;
 }
 
@@ -71,7 +71,7 @@
   margin: auto;
 }
 
-.profile__add:hover {
+.profile__add-button:hover {
   opacity: 0.6;
 }
 
