@@ -2,16 +2,17 @@ import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import { openPopup, closePopup } from './utils.js';
 
-
+// Configuración para el validador de formularios
 const validationConfig = {
+  formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_inactive',
+  inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
 
-
+// Datos iniciales de las tarjetas
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -44,34 +45,34 @@ const profileNameElement = document.querySelector('.profile__name');
 const profileAboutElement = document.querySelector('.profile__about');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileAddButton = document.querySelector('.profile__add-button');
-const editPopupElement = document.querySelector('.popup');
+const editPopupElement = document.querySelector('#edit-profile-popup');
 const addImagePopupElement = document.querySelector('#add-image-popup');
 const popupImageOpen = document.querySelector('#popup_image-open');
 
-const formElement = document.querySelector('.popup__form');
+const formElement = document.querySelector('#edit-profile-popup .popup__form');
 const formCard = document.querySelector('#add-image-popup .popup__form');
-const nameInput = document.querySelector('.popup__input_name');
-const aboutInput = document.querySelector('.popup__input_about');
-const titleInput = document.querySelector('.popup__input_title');
+const nameInput = document.querySelector('#popup__input_name');
+const aboutInput = document.querySelector('#popup__input_about');
+const titleInput = document.querySelector('#popup__input_title');
 const imageInput = document.querySelector('#popup__input_image');
 
 const cardArea = document.querySelector('.cards');
 
-
+// Crear instancias de validación para cada formulario
 const editFormValidator = new FormValidator(validationConfig, formElement);
 const addCardFormValidator = new FormValidator(validationConfig, formCard);
 
-
+// Iniciar validación
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
 
-
+// Función para crear nueva tarjeta
 function createCard(data) {
   const card = new Card(data, '.template-card', handleOpenImage);
   return card.generateCard();
 }
 
-
+// Event Handlers
 function handleEditProfileClick() {
   nameInput.value = profileNameElement.textContent;
   aboutInput.value = profileAboutElement.textContent;
@@ -114,25 +115,25 @@ function handleOpenImage(name, link) {
   openPopup(popupImageOpen);
 }
 
-
+// Event Listeners
 profileEditButton.addEventListener('click', handleEditProfileClick);
 profileAddButton.addEventListener('click', handleAddCardClick);
 formElement.addEventListener('submit', handleProfileFormSubmit);
 formCard.addEventListener('submit', handleAddCardFormSubmit);
 
-
+// Cerrar popups con click en overlay
 document.querySelectorAll('.popup__overlay').forEach((overlay) => {
   const popup = overlay.closest('.popup');
   overlay.addEventListener('click', () => closePopup(popup));
 });
 
-
-document.querySelectorAll('.popup__close-button').forEach((button) => {
+// Cerrar popups con botón de cerrar
+document.querySelectorAll('.popup__close-button, .popup__close-button-image').forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
 
-
+// Renderizar tarjetas iniciales
 initialCards.forEach((item) => {
   const card = createCard(item);
   cardArea.append(card);
