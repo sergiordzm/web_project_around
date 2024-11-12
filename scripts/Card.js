@@ -15,17 +15,16 @@ export default class Card {
   }
 
   _setEventListeners() {
-    // Like button
+
     this._element.querySelector('.card__like-button').addEventListener('click', () => {
       this._handleLikeClick();
     });
 
-    // Delete button
+
     this._element.querySelector('.card__delete-button').addEventListener('click', () => {
       this._handleDeleteClick();
     });
 
-    // Image click
     this._cardImage.addEventListener('click', () => {
       this._handleImageClick(this._name, this._link);
     });

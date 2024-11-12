@@ -2,7 +2,7 @@ import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import { openPopup, closePopup } from './utils.js';
 
-// Configuración para el validador de formularios
+
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -12,7 +12,7 @@ const validationConfig = {
   errorClass: 'popup__error_visible'
 };
 
-// Datos iniciales de las tarjetas
+
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -40,7 +40,7 @@ const initialCards = [
   }
 ];
 
-// Elementos DOM
+
 const profileNameElement = document.querySelector('.profile__name');
 const profileAboutElement = document.querySelector('.profile__about');
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -58,21 +58,21 @@ const imageInput = document.querySelector('#popup__input_image');
 
 const cardArea = document.querySelector('.cards');
 
-// Crear instancias de validación para cada formulario
+
 const editFormValidator = new FormValidator(validationConfig, formElement);
 const addCardFormValidator = new FormValidator(validationConfig, formCard);
 
-// Iniciar validación
+
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
 
-// Función para crear nueva tarjeta
+
 function createCard(data) {
   const card = new Card(data, '.template-card', handleOpenImage);
   return card.generateCard();
 }
 
-// Event Handlers
+
 function handleEditProfileClick() {
   nameInput.value = profileNameElement.textContent;
   aboutInput.value = profileAboutElement.textContent;
@@ -115,25 +115,25 @@ function handleOpenImage(name, link) {
   openPopup(popupImageOpen);
 }
 
-// Event Listeners
+
 profileEditButton.addEventListener('click', handleEditProfileClick);
 profileAddButton.addEventListener('click', handleAddCardClick);
 formElement.addEventListener('submit', handleProfileFormSubmit);
 formCard.addEventListener('submit', handleAddCardFormSubmit);
 
-// Cerrar popups con click en overlay
+
 document.querySelectorAll('.popup__overlay').forEach((overlay) => {
   const popup = overlay.closest('.popup');
   overlay.addEventListener('click', () => closePopup(popup));
 });
 
-// Cerrar popups con botón de cerrar
+
 document.querySelectorAll('.popup__close-button, .popup__close-button-image').forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
 
-// Renderizar tarjetas iniciales
+
 initialCards.forEach((item) => {
   const card = createCard(item);
   cardArea.append(card);
